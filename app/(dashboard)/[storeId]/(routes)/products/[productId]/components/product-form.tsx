@@ -153,17 +153,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   <ImageUpload
                     value={field.value.map((image) => image.url)}
                     disabled={loading}
-                    // Adjusting logic for a single URL string
-                    onChange={(url) => {
-                      // Ensure the single URL is added as an object
-                      const updatedImages = [...field.value, { url }];
-                      field.onChange(updatedImages);
-                    }}
-                    onRemove={(urlToRemove) => {
-                      // Removing a single URL object based on url match
-                      const updatedImages = field.value.filter((image) => image.url !== urlToRemove);
-                      field.onChange(updatedImages);
-                    }}
+                    onChange={(url) => field.onChange([...field.value, { url }])}
+                    onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
                   />
                 </FormControl>
                 <FormMessage />
@@ -191,7 +182,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <FormItem>
                   <FormLabel>Price</FormLabel>
                   <FormControl>
-                    <Input type="number" disabled={loading} placeholder="9.99" {...field} />
+                    <Input type="number" disabled={loading} placeholder="000000" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -224,11 +215,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="sizeId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
+                  <FormLabel>Residential</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a size" />
+                        <SelectValue defaultValue={field.value} placeholder="Select a residential" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -246,11 +237,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name="colorId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Color</FormLabel>
+                  <FormLabel>Amenities</FormLabel>
                   <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue defaultValue={field.value} placeholder="Select a color" />
+                        <SelectValue defaultValue={field.value} placeholder="Select a amenities" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -280,7 +271,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                       Featured
                     </FormLabel>
                     <FormDescription>
-                      This property will appear on the home page.
+                      This property will appear on the home page
                     </FormDescription>
                   </div>
                 </FormItem>

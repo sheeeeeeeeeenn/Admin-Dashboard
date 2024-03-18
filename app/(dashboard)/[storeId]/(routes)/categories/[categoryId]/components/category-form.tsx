@@ -86,7 +86,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success('Category deleted.');
     } catch (error: any) {
-      toast.error('Make sure you removed all properties using this category first.');
+      toast.error('Make sure you removed all Properties.');
     } finally {
       setLoading(false);
       setOpen(false);

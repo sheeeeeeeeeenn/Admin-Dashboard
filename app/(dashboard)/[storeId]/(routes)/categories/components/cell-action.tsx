@@ -38,7 +38,7 @@ export const CellAction: React.FC<CellActionProps> = ({
       toast.success('Category deleted.');
       router.refresh();
     } catch (error) {
-      toast.error('Make sure you removed all properties using this category first.');
+      toast.error('Make sure you removed all Properties.');
     } finally {
       setOpen(false);
       setLoading(false);

@@ -84,7 +84,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
       router.push(`/${params.storeId}/colors`);
       toast.success('Amenities deleted.');
     } catch (error: any) {
-      toast.error('Make sure you removed all Property using this Amenities first.');
+      toast.error('Make sure you removed all Properties.');
     } finally {
       setLoading(false);
       setOpen(false);

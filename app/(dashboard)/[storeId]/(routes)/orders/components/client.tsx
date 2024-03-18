@@ -15,9 +15,9 @@ export const OrderClient: React.FC<OrderClientProps> = ({
 }) => {
   return (
     <>
-      <Heading title={`Orders (${data.length})`} description="Manage properties" />
+      <Heading title={`Payments (${data.length})`} description="Manage Payments" />
       <Separator />
-      <DataTable searchKey="products" columns={columns} data={data} />
+      <DataTable searchKey="Payments" columns={columns} data={data} />
     </>
   );
 };
