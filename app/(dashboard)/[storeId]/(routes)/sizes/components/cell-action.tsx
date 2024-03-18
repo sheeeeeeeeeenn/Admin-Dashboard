@@ -34,7 +34,7 @@ export const CellAction: React.FC<CellActionProps> = ({
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
-      toast.success('Size deleted.');
+      toast.success('Residential deleted.');
       router.refresh();
     } catch (error) {
       toast.error('Make sure you removed all Properties using this Residential first.');
