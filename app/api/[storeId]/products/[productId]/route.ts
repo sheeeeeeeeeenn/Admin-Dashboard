@@ -9,7 +9,7 @@ export async function GET(
 ) {
   try {
     if (!params.productId) {
-      return new NextResponse("Property id is required", { status: 400 });
+      return new NextResponse("Product id is required", { status: 400 });
     }
 
     const product = await prismadb.product.findUnique({
@@ -23,10 +23,10 @@ export async function GET(
         color: true,
       }
     });
-
+  
     return NextResponse.json(product);
   } catch (error) {
-    console.log('[PROPERTY_GET]', error);
+    console.log('[PRODUCT_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -43,7 +43,7 @@ export async function DELETE(
     }
 
     if (!params.productId) {
-      return new NextResponse("Property id is required", { status: 400 });
+      return new NextResponse("Product id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -62,10 +62,10 @@ export async function DELETE(
         id: params.productId
       },
     });
-
+  
     return NextResponse.json(product);
   } catch (error) {
-    console.log('[PROPERTY_DELETE]', error);
+    console.log('[PRODUCT_DELETE]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -87,7 +87,7 @@ export async function PATCH(
     }
 
     if (!params.productId) {
-      return new NextResponse("Property id is required", { status: 400 });
+      return new NextResponse("Product id is required", { status: 400 });
     }
 
     if (!name) {
@@ -157,10 +157,10 @@ export async function PATCH(
         },
       },
     })
-
+  
     return NextResponse.json(product);
   } catch (error) {
-    console.log('[PROPERTY_PATCH]', error);
+    console.log('[PRODUCT_PATCH]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };

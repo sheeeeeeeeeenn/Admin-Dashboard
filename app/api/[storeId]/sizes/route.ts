@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prismadb from '@/lib/prismadb';
-
+ 
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
@@ -48,7 +48,7 @@ export async function POST(
         storeId: params.storeId
       }
     });
-
+  
     return NextResponse.json(size);
   } catch (error) {
     console.log('[SIZES_POST]', error);
@@ -70,7 +70,7 @@ export async function GET(
         storeId: params.storeId
       }
     });
-
+  
     return NextResponse.json(sizes);
   } catch (error) {
     console.log('[SIZES_GET]', error);

@@ -9,7 +9,7 @@ export async function GET(
 ) {
   try {
     if (!params.colorId) {
-      return new NextResponse("Color id is required", { status: 400 });
+      return new NextResponse("Amenities id is required", { status: 400 });
     }
 
     const color = await prismadb.color.findUnique({
@@ -17,10 +17,10 @@ export async function GET(
         id: params.colorId
       }
     });
-
+  
     return NextResponse.json(color);
   } catch (error) {
-    console.log('[COLOR_GET]', error);
+    console.log('[AMENITIES_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -37,7 +37,7 @@ export async function DELETE(
     }
 
     if (!params.colorId) {
-      return new NextResponse("Color id is required", { status: 400 });
+      return new NextResponse("amenities id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -56,10 +56,10 @@ export async function DELETE(
         id: params.colorId
       }
     });
-
+  
     return NextResponse.json(color);
   } catch (error) {
-    console.log('[COLOR_DELETE]', error);
+    console.log('[AMENITIES_DELETE]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -81,16 +81,16 @@ export async function PATCH(
     }
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse("Type is required", { status: 400 });
     }
 
     if (!value) {
-      return new NextResponse("Value is required", { status: 400 });
+      return new NextResponse("Filter is required", { status: 400 });
     }
 
 
     if (!params.colorId) {
-      return new NextResponse("Color id is required", { status: 400 });
+      return new NextResponse("Amenities id is required", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -113,7 +113,7 @@ export async function PATCH(
         value
       }
     });
-
+  
     return NextResponse.json(color);
   } catch (error) {
     console.log('[COLOR_PATCH]', error);

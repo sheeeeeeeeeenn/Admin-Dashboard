@@ -76,10 +76,10 @@ export async function POST(
         },
       },
     });
-
+  
     return NextResponse.json(product);
   } catch (error) {
-    console.log('[PROPERTY_POST]', error);
+    console.log('[PRODUCTS_POST]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -118,10 +118,10 @@ export async function GET(
         createdAt: 'desc',
       }
     });
-
+  
     return NextResponse.json(products);
   } catch (error) {
-    console.log('[PROPERTY_GET]', error);
+    console.log('[PRODUCTS_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };

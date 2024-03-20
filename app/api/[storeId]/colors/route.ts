@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import prismadb from '@/lib/prismadb';
 import { auth } from '@clerk/nextjs';
-
+ 
 export async function POST(
   req: Request,
   { params }: { params: { storeId: string } }
@@ -19,11 +19,11 @@ export async function POST(
     }
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse("Type is required", { status: 400 });
     }
 
     if (!value) {
-      return new NextResponse("Value is required", { status: 400 });
+      return new NextResponse("Filter is required", { status: 400 });
     }
 
     if (!params.storeId) {
@@ -48,10 +48,10 @@ export async function POST(
         storeId: params.storeId
       }
     });
-
+  
     return NextResponse.json(color);
   } catch (error) {
-    console.log('[COLORS_POST]', error);
+    console.log('[AMENITIES_POST]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };
@@ -70,10 +70,10 @@ export async function GET(
         storeId: params.storeId
       }
     });
-
+  
     return NextResponse.json(colors);
   } catch (error) {
-    console.log('[COLORS_GET]', error);
+    console.log('[AMENITIES_GET]', error);
     return new NextResponse("Internal error", { status: 500 });
   }
 };

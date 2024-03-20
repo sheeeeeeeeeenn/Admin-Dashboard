@@ -119,9 +119,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Type</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Residential name" {...field} />
+                    <Input disabled={loading} placeholder="Residential type" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,9 +132,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Filter</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Residential value" {...field} />
+                    <Input disabled={loading} placeholder="Residential filter" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

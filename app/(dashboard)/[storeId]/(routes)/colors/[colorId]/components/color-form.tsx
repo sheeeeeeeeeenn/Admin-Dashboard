@@ -25,10 +25,8 @@ import { Heading } from "@/components/ui/heading"
 import { AlertModal } from "@/components/modals/alert-modal"
 
 const formSchema = z.object({
-  name: z.string().min(2),
-  value: z.string().min(4).max(9).regex(/^#/, {
-    message: 'String must be a valid hex code'
-  }),
+  name: z.string().min(1),
+  value: z.string().min(1),
 });
 
 type ColorFormValues = z.infer<typeof formSchema>
@@ -50,6 +48,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
   const description = initialData ? 'Edit a Amenities.' : 'Add a new Amenities';
   const toastMessage = initialData ? 'Amenities updated.' : 'Amenities created.';
   const action = initialData ? 'Save changes' : 'Create';
+
 
   const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
@@ -105,7 +104,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({
           <Button
             disabled={loading}
             variant="destructive"
-            size="sm"
+            color="sm"
             onClick={() => setOpen(true)}
           >
             <Trash className="h-4 w-4" />
@@ -121,9 +120,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Type</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Amenities name" {...field} />
+                    <Input disabled={loading} placeholder="Amenities type" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,15 +133,9 @@ export const ColorForm: React.FC<ColorFormProps> = ({
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Filter</FormLabel>
                   <FormControl>
-                    <div className="flex items-center gap-x-4">
-                      <Input disabled={loading} placeholder="Amenities value" {...field} />
-                      <div
-                        className="border p-4 rounded-full"
-                        style={{ backgroundColor: field.value }}
-                      />
-                    </div>
+                    <Input disabled={loading} placeholder="Amenities filter" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

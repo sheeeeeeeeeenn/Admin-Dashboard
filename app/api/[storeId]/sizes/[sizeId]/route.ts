@@ -17,7 +17,7 @@ export async function GET(
         id: params.sizeId
       }
     });
-
+  
     return NextResponse.json(size);
   } catch (error) {
     console.log('[SIZE_GET]', error);
@@ -56,7 +56,7 @@ export async function DELETE(
         id: params.sizeId
       }
     });
-
+  
     return NextResponse.json(size);
   } catch (error) {
     console.log('[SIZE_DELETE]', error);
@@ -113,7 +113,7 @@ export async function PATCH(
         value
       }
     });
-
+  
     return NextResponse.json(size);
   } catch (error) {
     console.log('[SIZE_PATCH]', error);

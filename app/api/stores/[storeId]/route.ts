@@ -35,7 +35,7 @@ export async function PATCH(
         name
       }
     });
-
+  
     return NextResponse.json(store);
   } catch (error) {
     console.log('[STORE_PATCH]', error);
@@ -65,7 +65,7 @@ export async function DELETE(
         userId
       }
     });
-
+  
     return NextResponse.json(store);
   } catch (error) {
     console.log('[STORE_DELETE]', error);
