@@ -60,12 +60,12 @@ export const SizeForm: React.FC<SizeFormProps> = ({
     try {
       setLoading(true);
       if (initialData) {
-        await axios.patch(`/api/${params.storeId}/residential/${params.sizeId}`, data);
+        await axios.patch(`/api/${params.storeId}/sizes/${params.sizeId}`, data);
       } else {
-        await axios.post(`/api/${params.storeId}/residential`, data);
+        await axios.post(`/api/${params.storeId}/sizes`, data);
       }
       router.refresh();
-      router.push(`/${params.storeId}/residential`);
+      router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error: any) {
       toast.error('Something went wrong.');
@@ -77,9 +77,9 @@ export const SizeForm: React.FC<SizeFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/residential/${params.sizeId}`);
+      await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
       router.refresh();
-      router.push(`/${params.storeId}/residential`);
+      router.push(`/${params.storeId}/sizes`);
       toast.success('Residential deleted.');
     } catch (error: any) {
       toast.error('Make sure you removed all Properties using this Residential first.');
