@@ -5,6 +5,7 @@ export default authMiddleware({
   publicRoutes: ["/api/:path*"],  
 
   ignoredRoutes: ['/no-auth-in-this-route'],
+  
 });
 
 
