@@ -25,42 +25,11 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({
   const stockCount = await getStockCount(params.storeId);
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
+    <div className="flex">
+      <div className="flex-1 space-y-4 p-8 pt-6"> {/* Main Content Area */}
         <Heading title="Admin Dashboard" description="Overview of your dashboard" />
         <Separator />
-        <div className="grid gap-4 grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
-                Total Revenue
-              </CardTitle>
-              <HandCoins className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{formatter.format(totalRevenue)}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Sales</CardTitle>
-              <CreditCard className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">+{salesCount}</div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Properties Available</CardTitle>
-              <Landmark className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stockCount}</div>
-            </CardContent>
-          </Card>
-        </div>
-        <Card className="col-span-4">
+        <Card className="col-span-full">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
@@ -69,7 +38,37 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({
           </CardContent>
         </Card>
       </div>
+      <div className="flex flex-col space-y-8 p-8 w-1/3 mt-10"> {/* Sidebar for Key Metrics with top margin */}
+        <Card className="flex flex-col mt-0 flex-grow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+            <HandCoins className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="flex-grow">
+            <div className="text-2xl font-bold">{formatter.format(totalRevenue)}</div>
+          </CardContent>
+        </Card>
+        <Card className="flex flex-col mt-0 flex-grow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Sales</CardTitle>
+            <CreditCard className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="flex-grow">
+            <div className="text-2xl font-bold">+{salesCount}</div>
+          </CardContent>
+        </Card>
+        <Card className="flex flex-col mt-0 flex-grow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Properties Available</CardTitle>
+            <Landmark className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent className="flex-grow">
+            <div className="text-2xl font-bold">{stockCount}</div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
+
   );
 };
 
